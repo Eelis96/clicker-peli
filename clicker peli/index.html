@@ -1,0 +1,71 @@
+<script>
+   var moneycount = 0;
+   var autoClick = 0;
+   var costAutoClick = 0;
+
+   function update() 
+   {
+  document.getElementById('text').value = moneycount;
+  document.title = moneycount + " moneys";
+  document.getElementById('amountAutoClick').innerHTML = "You Own " + autoClick +" Auto Clickers";
+  document.getElementById('costAutoClick').innerHTML = (autoClick+1) * 12 +" moneys";
+   }
+   
+
+   
+   function timer() {
+    moneycount = moneycount + autoClick;
+ update()
+ }
+ setInterval(timer, 100);
+</script>
+<html>
+<head><title>Clicker peli</title></head>
+<body>
+
+    <a href=# onclick="add()"><img src="jepulis.PNG"></a>
+ you got:
+ <input type="text" id="text" disabled style= "text-align:center">
+ <script>
+  function add() {
+ moneycount = moneycount + 1;
+ update()
+  }
+  </script>
+  moneys
+  <br><br>
+  
+  <button><a href="#" onclick="save()">Save</a></button>
+  <button><a href="#" onclick="load()">Load</a></button>
+  <br><br>
+  
+  <p>Buy 1 Auto Clicker</p>
+  <button><a href="#" onclick="buyAutoClick()"><img  src="jepulis.PNG" width="70px" height="65px">
+  </a><button>
+  <p id="costAutoClick">moneys</p>
+  <p id="amountAutoClick">You Own 0 Auto Clickers</p>
+  
+  <script>
+  function save() {
+    localStorage.setItem("moneycount", moneycount);
+    localStorage.setItem("autoClick", autoClick);
+  }
+  function load() {
+    cookiecount = localStorage.getItem("moneycount");
+    cookiecount = parseInt(moneycount);
+
+
+    autoClick = localStorage.getItem("autoClick");
+    autoClick = parseInt(autoClick);
+ update()
+  }
+  function buyAutoClick() {
+    if (moneycount >= ((autoClick+1) * 12)) {
+ moneycount = moneycount - ((autoClick+1) * 12);
+ autoClick = autoClick + 1;
+ update()
+ }
+  }
+  </script>
+</body>
+</html>
